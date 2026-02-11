@@ -61,7 +61,7 @@ public class SecurityConfig {
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
                 "http://localhost:5174",
-                "https://foodiehub-frontend-yipj.vercel.app"
+                "https://foodiehub-frontend.vercel.app/"
         ));
 
         config.setAllowedMethods(List.of(

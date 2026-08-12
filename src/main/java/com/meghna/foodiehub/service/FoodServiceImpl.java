@@ -86,13 +86,15 @@ public class FoodServiceImpl implements FoodService{
     @Override
     public void deleteFood(String id) {
         FoodResponse response = readFood(id);
+
         String imageUrl = response.getImageUrl();
-        String filename = imageUrl.substring(imageUrl.lastIndexOf("/")+1);
-        boolean isFileDelete = deleteFile(filename);
-        if(isFileDelete){
-            foodRepository.deleteById(response.getId());
+
+        if (imageUrl != null && !imageUrl.isEmpty()) {
+            String filename = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
+            deleteFile(filename);
         }
 
+        foodRepository.deleteById(response.getId());
     }
 
     private FoodEntity covertToEntity(FoodRequest request){
